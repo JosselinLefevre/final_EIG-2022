@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TP2</string>
+    <string name="down">Down</string>
+    <string name="left">Left</string>
+    <string name="right">Right</string>
+    <string name="speed">Speed</string>
+    <string name="up">Up</string>
+    <string name="directions">Directions</string>
+    <string name="none">None</string>
+    <string name="bt_enable">Bluetooth enable</string>
+</resources>

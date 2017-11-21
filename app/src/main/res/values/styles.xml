@@ -1,0 +1,27 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="SeekBarTheme" parent="Widget.AppCompat.SeekBar" >
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
+
+    <style name="ProgressBarTheme" parent="Widget.AppCompat.ProgressBar" >
+        <item name="colorAccent">#ffffff</item>
+    </style>
+
+   <style name="SpinnerColor" parent="Theme.AppCompat.Light.NoActionBar">
+
+       <item name="colorControlNormal">#ffffff</item>
+       <item name="colorControlActivated">#ffffff</item>
+       <item name="colorControlHighlight">#ffffff</item>
+    </style>
+
+</resources>

@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinator_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    tools:context="eig_2022.com.tp2.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <ProgressBar
+                    android:id="@+id/spinner_progress"
+                    style="?android:attr/progressBarStyleLarge"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignBottom="@+id/spinner"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignStart="@+id/spinner"
+                    android:layout_marginStart="10dp"
+                    android:theme="@style/ProgressBarTheme" />
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_gravity="end"
+                    android:spinnerMode="dropdown"
+                    android:theme="@style/SpinnerColor" />
+            </RelativeLayout>
+        </android.support.v7.widget.Toolbar>
+
+        <TextView
+            android:id="@+id/direction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/directions"
+            android:textColor="#000000" />
+
+
+        <SurfaceView
+            android:id="@+id/touchpad"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:background="@color/colorAccent" />
+
+        <LinearLayout
+            android:id="@+id/tada"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/gamepad"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginBottom="15dp">
+
+            <ImageView
+                android:id="@+id/left"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:contentDescription="@string/up"
+                android:tag="1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="@+id/guideline9"
+                app:layout_constraintRight_toLeftOf="@+id/guideline3"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_empty_gamepadtouch_black_24dp" />
+
+
+            <ImageView
+                android:id="@+id/down"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:contentDescription="@string/up"
+                android:rotation="-90"
+                android:tag="3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline8"
+                app:srcCompat="@drawable/ic_empty_gamepadtouch_black_24dp" />
+
+            <ImageView
+                android:id="@+id/upp"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:contentDescription="@string/up"
+                android:rotation="90"
+                android:tag="0"
+                app:layout_constraintBottom_toTopOf="@+id/guideline8"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_empty_gamepadtouch_black_24dp" />
+
+            <ImageView
+                android:id="@+id/right"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:contentDescription="@string/up"
+                android:rotation="180"
+                android:tag="2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="@+id/guideline3"
+                app:layout_constraintRight_toLeftOf="@+id/guideline4"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_empty_gamepadtouch_black_24dp" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="180dp"
+                tools:layout_editor_absoluteX="180dp"
+                tools:layout_editor_absoluteY="25dp" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="270dp"
+                tools:layout_editor_absoluteX="270dp"
+                tools:layout_editor_absoluteY="25dp" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.5"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="115dp" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="90dp"
+                tools:layout_editor_absoluteX="90dp"
+                tools:layout_editor_absoluteY="25dp" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/divider" />
+
+        <TextView
+            android:id="@+id/speeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/speed"
+            android:textColor="#000000" />
+
+        <SeekBar
+            android:id="@+id/speed_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/SeekBarTheme" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/speed_layout"
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+
+            <TextView
+                android:id="@+id/percent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0%"
+                android:textColor="#000000"
+                android:textSize="50sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                android:id="@+id/speed_level"
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                app:background_progressbar_color="#FFCDD2"
+                app:background_progressbar_width="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:progressbar_color="#F44336"
+                app:progressbar_width="10dp" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <View
+            android:id="@+id/surfaceView"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/divider" />
+
+
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
