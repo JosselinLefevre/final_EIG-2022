@@ -76,15 +76,11 @@ class BTManagerTask extends AsyncTask<Void, Boolean, Boolean> {
     }
 
     @Override
-    protected void onProgressUpdate(Boolean... progress){
+    protected void onProgressUpdate(Boolean... progress) {
         mainActivity.showProgress(progress[0], mSpinnner);
     }
 
     @Override
     protected void onCancelled() {
     }
-
-
-
-
 }

@@ -4,8 +4,10 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -46,6 +48,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     MySurfaceView mySurfaceView;
     CircularProgressBar progressBar;
     TextView textView;
+
+ /*  private final BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+            if (BluetoothDevice.ACTION_ACL_DISCONNECTED.equals(action)){
+                final Snackbar snackbar = Snackbar.make(findViewById(R.id.coordinator_layout), "grosPédé", Snackbar.LENGTH_LONG);
+                snackbar.show();
+            }
+        }
+    };*/
 
 
     @Override
@@ -118,24 +131,21 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                             Log.wtf("Right true", initX + "=>" + finalX);
 
                             displaySpeedPercent(initX, finalX);
-                            v.setTag(2);
-                            sendDirectionToThread(v);
+                            sendDirectionToThread(2);
                         }
 
                         if (finalX <= (initX - 100)) {
                             Log.wtf("Left true", initX + "=>" + finalX);
 
                             displaySpeedPercent(initX, finalX);
-                            v.setTag(1);
-                            sendDirectionToThread(v);
+                            sendDirectionToThread(1);
                         }
 
                         if (finalY >= (initY + 100)) {
                             Log.wtf("Down true", initY + "=>" + finalY);
 
                             displaySpeedPercent(initY, finalY);
-                            v.setTag(3);
-                            sendDirectionToThread(v);
+                            sendDirectionToThread(3);
                         }
 
                         if (finalY <= (initY - 100)) {
@@ -143,12 +153,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
                             displaySpeedPercent(initY, finalY);
                             v.setTag(0);
-                            sendDirectionToThread(v);
+                            sendDirectionToThread(0);
                         }
                         break;
 
                     case MotionEvent.ACTION_UP:
-                        sendDirectionToThread(null);
+                        sendDirectionToThread(4);
                         progressBar.setProgress(0);
                         textView.setText(0+"%");
                         break;
@@ -156,6 +166,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 return true;
             }
         });
+
+        /*IntentFilter filter = new IntentFilter();
+        filter.addAction((BluetoothDevice.ACTION_ACL_CONNECTED));
+        filter.addAction((BluetoothDevice.ACTION_ACL_DISCONNECTED));
+        this.registerReceiver(broadcastReceiver, filter);*/
 
         progressBar = (CircularProgressBar) findViewById(R.id.speed_level);
 
@@ -259,13 +274,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
     }
 
-    public void sendDirectionToThread(View v) {
+    public void sendDirectionToThread(int _dir) {
         if (connectThread != null) {
-            if (v == null) {
-                connectThread.setDirection(4);
-                return;
-            }
-            connectThread.setDirection(parseInt(v.getTag().toString()));
+            connectThread.setDirection(_dir);
         }
     }
 
@@ -311,11 +322,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 public boolean onTouch(View v, MotionEvent event) {
                     if (event.getAction() == MotionEvent.ACTION_DOWN) {
                         v.setBackgroundResource(R.drawable.ic_gamepadtouch_black_24dp);
-                        sendDirectionToThread(v);
+                        v.getTag();
+                        sendDirectionToThread(parseInt(v.getTag().toString()));
 
                     } else if (event.getAction() == MotionEvent.ACTION_UP) {
                         v.setBackgroundResource(R.drawable.ic_empty_gamepadtouch_black_24dp);
-                        sendDirectionToThread(null);
+                        sendDirectionToThread(4);
                     }
                     return true;
                 }
@@ -419,3 +431,4 @@ class MySurfaceView extends SurfaceView implements Runnable {
     public void run() {
     }
 }
+
